@@ -1,7 +1,7 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import CornerCut from "./components/CornerCut/index.vue";
+import CornerCut from "./components/CornerCut1/index.vue";
 import MidCut from "./components/MidCut/index.vue";
 </script>
 
