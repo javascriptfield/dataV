@@ -1,86 +1,72 @@
 <script setup>
 import { ref } from "vue";
+import Title from "../Title/index.vue";
 </script>
 
 <template>
-  <div class="corner-container">
-    <div class="title">托管业务总金额统计</div>
-    <div class="corner-cut">
-      <slot></slot>
-    </div>
+  <div class="corner-cut-container">
+    <Title />
+    <div class="absolute-background"></div>
+    <div class="background border"></div>
   </div>
 </template>
 
 <style scoped>
-.corner-container {
+.corner-cut-container {
+  width: 480px;
+  height: 480px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 480px;
+  align-items: center;
 }
-.corner-cut {
-  width: 480px;
+.absolute-background {
+  position: absolute;
+  width: 458px;
   height: 458px;
-  margin-top: -20px;
-  display: flex;
-  justify-content: center;
+  background: rgba(125, 217, 247, 0.15);
+  margin-top: 20px;
+  z-index: 0;
   clip-path: polygon(
     32px 0,
-    calc(100% - 32px) 0,
-    100% 32px,
-    100% calc(100% - 32px),
-    calc(100% - 32px) 100%,
-    32px 100%,
+    0 32px,
     0 calc(100% - 32px),
-    0 32px
+    32px 100%,
+    calc(100% - 32px) 100%,
+    100% calc(100% - 32px),
+    100% 32px,
+    calc(100% - 32px) 0
   );
-  background: linear-gradient(
-        -45deg,
-        rgba(125, 217, 247, 1) 23px,
-        rgba(125, 217, 247, 0.15) 0
-      )
-      bottom right,
-    linear-gradient(
-        45deg,
-        rgba(125, 217, 247, 1) 23px,
-        rgba(125, 217, 247, 0.15) 0
-      )
-      bottom left,
-    linear-gradient(
-        135deg,
-        rgba(125, 217, 247, 1) 22px,
-        rgba(125, 217, 247, 0.15) 0
-      )
-      top left,
-    linear-gradient(
-        -135deg,
-        rgba(125, 217, 247, 1) 22px,
-        rgba(125, 217, 247, 0.15) 0
-      )
-      top right;
-  background-size: 50% 50%;
-  background-repeat: no-repeat;
-  border: solid 1px rgba(125, 217, 247, 1);
 }
-
-.title {
-  width: 276px;
-  height: 40px;
+.background {
+  width: 458px;
+  height: 458px;
+  background: rgba(125, 217, 247, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  background-color: rgba(125, 217, 247, 1);
-  color: #01173c;
-  font-weight: bold;
-  font-size: 18px;
+  margin-top: -20px;
+  z-index: 1;
+} /* 下文元素都使用了此样式 */
+.border {
   clip-path: polygon(
-    10px 0,
-    calc(100% - 10px) 0,
-    100% 20px,
-    calc(100% - 10px) 100%,
-    10px 100%,
-    0 20px
+    32px 0,
+    0 32px,
+    0 calc(100% - 32px),
+    32px 100%,
+    33px calc(100% - 1px),
+    1px calc(100% - 33px),
+    1px 33px,
+    33px 1px,
+    calc(100% - 33px) 1px,
+    calc(100% - 1px) 33px,
+    calc(100% - 1px) calc(100% - 33px),
+    calc(100% - 33px) calc(100% - 1px),
+    33px calc(100% - 1px),
+    33px 100%,
+    calc(100% - 32px) 100%,
+    100% calc(100% - 32px),
+    100% 32px,
+    calc(100% - 32px) 0
   );
 }
 </style>

@@ -6,7 +6,7 @@ import { ref } from "vue";
   <div id="div1">
     <div class="trapezoidMaxLine">
       <div class="trapezoidMinLine"></div>
-      <span class="unitName titleText">用户访问量</span>
+      <span class="unitName">用户访问量</span>
     </div>
   </div>
 </template>
