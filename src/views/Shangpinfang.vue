@@ -9,6 +9,7 @@ import AreaPieChart from "../components/AreaPieChart/index.vue";
 import GaugeChartContainer from "../components/GaugeChartContainer/index.vue";
 import TrendChart from "../components/TrendChart/index.vue";
 import SalesStatisticsChart from "../components/SalesStatisticsChart/index.vue";
+import StatisticsTable from "../components/StatisticsTable/index.vue";
 const titleHeight = (100 / 1080) * 80 + "vh";
 const mapHeight = (100 / 1080) * 1000 + "vh";
 const graphHeight = (100 / 1080) * 300 + "vh";
@@ -43,6 +44,7 @@ const fontSize = (document.body.clientWidth / 1920) * 18 + "px";
         </div>
         <div class="image-border">
           <span class="graph-title">上月销售统计</span>
+          <StatisticsTable />
         </div>
         <div class="image-border">
           <span class="graph-title">各区销量统计</span>
