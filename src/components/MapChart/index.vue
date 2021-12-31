@@ -23,6 +23,10 @@ onMounted(() => {
         label: {
           show: true,
           color: "#F5CF7A",
+          fontSize: 10,
+          formatter: function (params) {
+            return params.name + "\n\n" + "20130元/m²";
+          },
         },
         itemStyle: {
           areaColor: "rgba(40,147,195,0.2)",
