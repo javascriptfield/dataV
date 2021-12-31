@@ -70,6 +70,7 @@ import { ref } from "vue";
   color: #fff;
   left: 50%;
   transform: translateX(-50%);
-  top: -10px;
+  top: -20px;
+  font-size: 18px;
 }
 </style>

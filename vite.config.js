@@ -13,7 +13,7 @@ export default defineConfig({
         require('postcss-px-to-viewport')({
           unitToConvert: 'px',
           viewportWidth: 1920,
-          propList: ['*'],
+          propList: ['*', "!height", "!font-size"],
           viewportUnit: 'vw',
           fontViewportUnit: 'vw',
         })
