@@ -79,16 +79,6 @@ import StatisticsTable from "../components/StatisticsTable/index.vue";
 
 <style lang="scss" scoped>
 @import "../style/function.scss";
-.header-container {
-  height: pxToVh(80);
-  box-shadow: 0 -7px 30px -8px rgba(40, 174, 195, 0.64) inset;
-  margin-bottom: 20px;
-}
-.header-text {
-  font-size: pxToVh(36);
-  color: #28aec3;
-  width: 360px;
-}
 .map {
   width: 760px;
   height: pxToVh(1000);
@@ -96,13 +86,8 @@ import StatisticsTable from "../components/StatisticsTable/index.vue";
 .image-border {
   width: 541px;
   height: pxToVh(300);
-  background: url("../src/assets/images/border.png") no-repeat center;
-  background-size: 100% 100%;
-  margin: 0 20px 20px 20px;
 }
 .graph-title {
-  color: #28aec3;
   font-size: pxToVh(18);
-  width: 144px;
 }
 </style>

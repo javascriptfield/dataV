@@ -2,7 +2,9 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import CustomCard from "../components/CustomCard/index.vue";
-
+import SuperviseAreaBarChart from "../components/SuperviseAreaBarChart/index.vue";
+import SuperviseMoneyBarChart from "../components/SuperviseMoneyBarChart/index.vue";
+import BankLoanAmountBarChart from "../components/BankLoanAmountBarChart/index.vue";
 const gridList = [
   {
     name: "监管项目(个)",
@@ -62,31 +64,17 @@ const gridList = [
           :chartSrc="item.src"
         />
       </div>
+      <div class="grid grid-cols-1">
+        <SuperviseAreaBarChart />
+        <SuperviseMoneyBarChart />
+      </div>
+      <div class="grid grid-cols-1">
+        <BankLoanAmountBarChart />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../style/function.scss";
-.header-container {
-  height: pxToVh(80);
-  box-shadow: 0 -7px 30px -8px rgba(40, 174, 195, 0.64) inset;
-  margin-bottom: 20px;
-}
-.header-text {
-  font-size: pxToVh(36);
-  color: #28aec3;
-  width: 360px;
-}
-.map {
-  width: 760px;
-  height: pxToVh(1000);
-}
-.image-border {
-  width: 337px;
-  height: pxToVh(152);
-  background: url("../src/assets/images/border1.png") no-repeat center;
-  background-size: 100% 100%;
-  margin: 0 20px 20px 20px;
-}
 </style>

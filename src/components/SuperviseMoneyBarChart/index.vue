@@ -2,20 +2,22 @@
 import * as echarts from "echarts";
 import { onMounted, nextTick } from "vue";
 onMounted(() => {
-  const trendChart = echarts.init(document.getElementById("trendChart"));
+  const superviseMoneyBarChart = echarts.init(
+    document.getElementById("superviseMoneyBarChart")
+  );
   window.addEventListener("resize", () => {
-    trendChart.resize();
+    superviseMoneyBarChart.resize();
   });
   nextTick(() => {
-    trendChart.setOption({
+    superviseMoneyBarChart.setOption({
       grid: {
         top: "30%",
         bottom: "16%",
-        right: "16%",
+        right: "6%",
         left: "12%",
       },
       legend: {
-        data: ["新增可售量", "销售量", "单价"],
+        data: ["监管资金出账", "监管资金入账"],
         y: "14%",
         x: "center",
         itemHeight: 16,
@@ -54,30 +56,9 @@ onMounted(() => {
       yAxis: [
         {
           type: "value",
-          name: "销量（套）",
           min: 0,
-          max: 1000,
-          interval: 200,
-          nameTextStyle: {
-            color: "#8497AA",
-          },
-          axisLabel: {
-            color: "#8497AA",
-          },
-          splitLine: {
-            show: true,
-            lineStyle: {
-              type: "dashed",
-              color: "#445D79",
-            },
-          },
-        },
-        {
-          type: "value",
-          name: "均价（元/m²）",
-          min: 0,
-          max: 50000,
-          interval: 10000,
+          max: 100,
+          interval: 25,
           nameTextStyle: {
             color: "#8497AA",
           },
@@ -95,39 +76,22 @@ onMounted(() => {
       ],
       series: [
         {
-          name: "新增可售量",
           type: "bar",
-          data: [20, 49, 70, 232, 256, 767, 1356, 1622, 326, 200, 64, 33],
-          itemStyle: {
-            normal: {
-              color: "#7999D4",
-            },
-          },
-        },
-        {
-          name: "销售量",
-          type: "bar",
-          data: [26, 59, 90, 264, 287, 707, 1756, 1822, 487, 188, 60, 23],
-          itemStyle: {
-            normal: {
-              color: "#E89898",
-            },
-          },
-        },
-        {
-          name: "单价",
-          type: "line",
-          yAxisIndex: 1,
-          data: [
-            10000, 20000, 30000, 40000, 32000, 36000, 22000, 23000, 32000,
-            47000, 25000, 32000,
-          ],
+          name: "监管资金出账",
+          data: [26, 59, 90, 24, 27, 77, 56, 22, 87, 18, 60, 23],
           itemStyle: {
             normal: {
               color: "#7BD9F6",
-              lineStyle: {
-                color: "#7BD9F6",
-              },
+            },
+          },
+        },
+        {
+          type: "bar",
+          name: "监管资金入账",
+          data: [26, 59, 90, 24, 27, 77, 17, 22, 48, 18, 60, 23],
+          itemStyle: {
+            normal: {
+              color: "#F7AE7C",
             },
           },
         },
@@ -137,5 +101,18 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div id="trendChart" style="width: 100%; height: 100%"></div>
+  <div class="image-border relative flex flex-col items-center justify-center">
+    <span class="graph-title truncate absolute top-0 font-bold"
+      >每月监管资金出入账</span
+    >
+    <div id="superviseMoneyBarChart" style="width: 100%; height: 100%"></div>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+@import "../../style/function.scss";
+.image-border {
+  width: 693px;
+  height: pxToVh(320);
+}
+</style>
