@@ -1,4 +1,30 @@
-<script setup></script>
+<script setup>
+import { onMounted, ref } from "vue";
+import axios from "axios";
+let tableData = ref({
+  lastMonthSales: 0,
+  lastMonthSalesArea: 0,
+  lastMonthSalesMonthOnMonth: 0,
+  lastMonthSalesPrice: 0,
+  lastMonthSalesYerrOnYear: 0,
+  priceMonthOnMonth: 0,
+  priceYerrOnYear: 0,
+  salesMonthOnMonth: 0,
+  salesYerrOnYear: 0,
+});
+const getData = () => {
+  axios
+    .post("largeScreen/transactionStatistics/lastMonthStatistics")
+    .then((res) => {
+      if (res.data.code == 10000) {
+        tableData.value = res.data.result;
+      }
+    });
+};
+onMounted(() => {
+  getData();
+});
+</script>
 <template>
   <table class="first-table">
     <tr>
@@ -7,9 +33,9 @@
       <th>同比</th>
     </tr>
     <tr>
-      <td>1220</td>
-      <td>63.85%</td>
-      <td>20.34%</td>
+      <td>{{ tableData.lastMonthSalesYerrOnYear }}</td>
+      <td>{{ tableData.salesMonthOnMonth }}%</td>
+      <td>{{ tableData.salesYerrOnYear }}%</td>
     </tr>
   </table>
   <table>
@@ -19,9 +45,9 @@
       <th>同比</th>
     </tr>
     <tr>
-      <td>15.13</td>
-      <td>60.15%</td>
-      <td>15.98%</td>
+      <td>{{ tableData.lastMonthSalesArea }}</td>
+      <td>{{ tableData.lastMonthSalesMonthOnMonth }}%</td>
+      <td>{{ tableData.lastMonthSalesYerrOnYear }}%</td>
     </tr>
   </table>
   <table>
@@ -31,9 +57,9 @@
       <th>同比</th>
     </tr>
     <tr>
-      <td>7982.13</td>
-      <td>60.54%</td>
-      <td>8.56%</td>
+      <td>{{ tableData.lastMonthSalesPrice }}</td>
+      <td>{{ tableData.priceMonthOnMonth }}%</td>
+      <td>{{ tableData.priceYerrOnYear }}%</td>
     </tr>
   </table>
 </template>

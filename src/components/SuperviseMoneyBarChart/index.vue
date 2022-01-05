@@ -80,9 +80,7 @@ onMounted(() => {
           name: "监管资金出账",
           data: [26, 59, 90, 24, 27, 77, 56, 22, 87, 18, 60, 23],
           itemStyle: {
-            normal: {
-              color: "#7BD9F6",
-            },
+            color: "#7BD9F6",
           },
         },
         {
@@ -90,9 +88,7 @@ onMounted(() => {
           name: "监管资金入账",
           data: [26, 59, 90, 24, 27, 77, 17, 22, 48, 18, 60, 23],
           itemStyle: {
-            normal: {
-              color: "#F7AE7C",
-            },
+            color: "#F7AE7C",
           },
         },
       ],

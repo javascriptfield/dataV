@@ -83,9 +83,7 @@ onMounted(() => {
             47000, 25000, 32000,
           ],
           itemStyle: {
-            normal: {
-              color: "#7C9DF7",
-            },
+            color: "#7C9DF7",
           },
         },
         {
@@ -96,9 +94,7 @@ onMounted(() => {
             47000, 25000, 32000,
           ],
           itemStyle: {
-            normal: {
-              color: "#F77BC7",
-            },
+            color: "#F77BC7",
           },
         },
       ],

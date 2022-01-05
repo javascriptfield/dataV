@@ -3,21 +3,53 @@ import * as echarts from "echarts";
 import { onMounted, ref } from "vue";
 import axios from "axios";
 let areaPieChart = ref(null);
+const series = ref([
+  {
+    value: 0,
+    name: "144m²以上",
+    key: "segQuantity1",
+    itemStyle: { color: "#BD7CF7" },
+  },
+  {
+    value: 0,
+    name: "120-144m²",
+    key: "segQuantity1",
+    itemStyle: { color: "#7BD9F6" },
+  },
+  {
+    value: 0,
+    name: "90-120m²",
+    key: "segQuantity3",
+    itemStyle: { color: "#F77BC7" },
+  },
+  {
+    value: 0,
+    name: "60-90m²",
+    key: "segQuantity2",
+    itemStyle: { color: "#F7AE7C" },
+  },
+  {
+    value: 0,
+    name: "60m²以下",
+    key: "segQuantity1",
+    itemStyle: { color: "#F5CF7A" },
+  },
+]);
 const getData = () => {
   axios
     .post("largeScreen/transactionStatistics/saleVolumeAreaSegment")
     .then((res) => {
       if (res.data.code == 10000) {
-        // for (const key in res.data.result) {
-        //   if (Object.hasOwnProperty.call(res.data.result, key)) {
-        //     const element = res.data.result[key];
-        //     series.value.forEach((e) => {
-        //       if (e.key == key) {
-        //         e.value = element;
-        //       }
-        //     });
-        //   }
-        // }
+        for (const key in res.data.result) {
+          if (Object.hasOwnProperty.call(res.data.result, key)) {
+            const element = res.data.result[key];
+            series.value.forEach((e) => {
+              if (e.key == key) {
+                e.value = element;
+              }
+            });
+          }
+        }
         setOption();
       }
     });
@@ -29,14 +61,7 @@ const setOption = () => {
       left: "6%",
       top: "center",
       itemGap: 12,
-      data: [
-        "140m²以上",
-        "120-140m²",
-        "90-120m²",
-        "70-90m²",
-        "50-70m²",
-        "50m²以下",
-      ],
+      data: ["144m²以上", "120-144m²", "90-120m²", "60-90m²", "60m²以下"],
       textStyle: {
         fontSize: 12,
         color: "#fff",
@@ -64,38 +89,7 @@ const setOption = () => {
             return data.percent + "%";
           },
         },
-        data: [
-          {
-            value: 135,
-            name: "140m²以上",
-            itemStyle: { color: "#BD7CF7" },
-          },
-          {
-            value: 735,
-            name: "120-140m²",
-            itemStyle: { color: "#7C9DF7" },
-          },
-          {
-            value: 580,
-            name: "90-120m²",
-            itemStyle: { color: "#7BD9F6" },
-          },
-          {
-            value: 484,
-            name: "70-90m²",
-            itemStyle: { color: "#F77BC7" },
-          },
-          {
-            value: 300,
-            name: "50-70m²",
-            itemStyle: { color: "#F7AE7C" },
-          },
-          {
-            value: 200,
-            name: "50m²以下",
-            itemStyle: { color: "#F5CF7A" },
-          },
-        ],
+        data: series.value,
       },
     ],
   });

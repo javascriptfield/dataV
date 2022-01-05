@@ -99,9 +99,7 @@ onMounted(() => {
           type: "bar",
           data: [20, 49, 70, 232, 256, 767, 1356, 1622, 326, 200, 64, 33],
           itemStyle: {
-            normal: {
-              color: "#7999D4",
-            },
+            color: "#7999D4",
           },
         },
         {
@@ -109,9 +107,7 @@ onMounted(() => {
           type: "bar",
           data: [26, 59, 90, 264, 287, 707, 1756, 1822, 487, 188, 60, 23],
           itemStyle: {
-            normal: {
-              color: "#E89898",
-            },
+            color: "#E89898",
           },
         },
         {
@@ -123,11 +119,9 @@ onMounted(() => {
             47000, 25000, 32000,
           ],
           itemStyle: {
-            normal: {
+            color: "#7BD9F6",
+            lineStyle: {
               color: "#7BD9F6",
-              lineStyle: {
-                color: "#7BD9F6",
-              },
             },
           },
         },

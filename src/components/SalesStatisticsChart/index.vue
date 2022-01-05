@@ -1,10 +1,29 @@
 <script setup>
 import * as echarts from "echarts";
 import { onMounted, nextTick } from "vue";
+import axios from "axios";
+const getData = () => {
+  axios.post("largeScreen/transactionStatistics/regionSales").then((res) => {
+    if (res.data.code == 10000) {
+      // for (const key in res.data.result) {
+      //   if (Object.hasOwnProperty.call(res.data.result, key)) {
+      //     const element = res.data.result[key];
+      //     series.value.forEach((e) => {
+      //       if (e.key == key) {
+      //         e.value = element;
+      //       }
+      //     });
+      //   }
+      // }
+      // setOption();
+    }
+  });
+};
 onMounted(() => {
   const salesStatisticsChart = echarts.init(
     document.getElementById("salesStatisticsChart")
   );
+  getData();
   window.addEventListener("resize", () => {
     salesStatisticsChart.resize();
   });
@@ -77,15 +96,13 @@ onMounted(() => {
           type: "bar",
           data: [20, 49, 70, 232, 256, 767, 1356, 1622, 326],
           itemStyle: {
-            normal: {
-              color: "#BD7CF7",
-              label: {
-                show: true,
-                position: "top",
-                textStyle: {
-                  color: "#8497AA",
-                  fontSize: 12,
-                },
+            color: "#BD7CF7",
+            label: {
+              show: true,
+              position: "top",
+              textStyle: {
+                color: "#8497AA",
+                fontSize: 12,
               },
             },
           },
