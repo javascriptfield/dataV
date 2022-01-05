@@ -2,10 +2,12 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import Shangpinfang from "./views/Shangpinfang.vue";
+import Zijinjianguan from "./views/Zijinjianguan.vue";
 </script>
 
 <template>
-  <Shangpinfang />
+  <!-- <Shangpinfang /> -->
+  <Zijinjianguan />
 </template>
 
 <style>
