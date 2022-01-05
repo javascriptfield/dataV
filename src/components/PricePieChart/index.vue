@@ -110,7 +110,7 @@ onMounted(() => {
   pricePieChart.value = echarts.init(document.getElementById("pricePieChart"));
   getData();
   window.addEventListener("resize", () => {
-    pricePieChart.resize();
+    pricePieChart.value.resize();
   });
 });
 </script>
