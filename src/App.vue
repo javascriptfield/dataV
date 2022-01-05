@@ -6,8 +6,8 @@ import Zijinjianguan from "./views/Zijinjianguan.vue";
 </script>
 
 <template>
-  <!-- <Shangpinfang /> -->
-  <Zijinjianguan />
+  <Shangpinfang />
+  <!-- <Zijinjianguan /> -->
 </template>
 
 <style>
