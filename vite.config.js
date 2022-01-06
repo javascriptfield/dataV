@@ -3,24 +3,15 @@ import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig({
-  plugins: [vue(), WindiCSS(), viteMockServe({
-    mockPath: 'mock',
-    localEnabled: false,
-    prodEnabled: true,
-    injectCode: `
-      import { setupProdMockServer } from './mockProdServer.js';
-      setupProdMockServer()
-    `,
-    supportTs: false
-  })],
+  plugins: [vue(), WindiCSS()],
   server: {
     host: '0.0.0.0',
-    proxy: {
-      '/ZsExternalInterface': {
-        target: 'http://192.168.1.140:9619',
-        changeOrigin: true,
-      },
-    }
+    // proxy: {
+    //   '/ZsExternalInterface': {
+    //     target: 'http://192.168.1.140:9619',
+    //     changeOrigin: true,
+    //   },
+    // }
   },
   css: {
     postcss: {
