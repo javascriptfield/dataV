@@ -4,8 +4,7 @@ import WindiCSS from 'vite-plugin-windicss'
 import { viteMockServe } from 'vite-plugin-mock'
 import { configMockPlugin } from './src/mock/config';
 export default ((command) => {
-  console.log('command: ', command);
-  let prodMock = false
+  let prodMock = true
   return {
     plugins: [vue(), WindiCSS(), viteMockServe({
       // default
