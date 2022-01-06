@@ -1,11 +1,21 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
-import { configMockPlugin } from './src/mock/config';
+import { viteMockServe } from 'vite-plugin-mock'
 export default ((command) => {
   let prodMock = true
   return {
-    plugins: [vue(), WindiCSS(), configMockPlugin(prodMock)],
+    plugins: [vue(), WindiCSS(), viteMockServe({
+      ignore: /^\_/,
+      mockPath: 'mock',
+      localEnabled: !prodMock,
+      prodEnabled: prodMock,
+      injectCode: `
+         import { setupProdMockServer } from './src/mockProdServer.js';
+   
+         setupProdMockServer();
+         `,
+    })],
     server: {
       host: '0.0.0.0',
       proxy: {
