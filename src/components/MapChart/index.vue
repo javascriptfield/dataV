@@ -12,7 +12,7 @@ const seriesData = suzhouJson.features.map((e) => {
   };
 });
 const getData = () => {
-  axios.post("largeScreen/transactionStatistics/regionPrice").then((res) => {
+  axios.post("/largeScreen/transactionStatistics/regionPrice").then((res) => {
     if (res.data.code == 10000) {
       res.data.result.slice(0, 9).forEach((element, index) => {
         seriesData[index].value = element.regionPrice;

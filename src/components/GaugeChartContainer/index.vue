@@ -6,7 +6,7 @@ let storage = ref(0);
 let amount = ref(0);
 let interval = ref(0);
 const getData = () => {
-  axios.post("largeScreen/transactionStatistics/salesAndStock").then((res) => {
+  axios.post("/largeScreen/transactionStatistics/salesAndStock").then((res) => {
     if (res.data.code == 10000) {
       const { cycle, salesCurrentMonth, stockCurrentMonth } = res.data.result;
       storage.value = stockCurrentMonth;

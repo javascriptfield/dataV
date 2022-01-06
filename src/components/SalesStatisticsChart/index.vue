@@ -5,7 +5,7 @@ import axios from "axios";
 let salesStatisticsChart = ref(null);
 const regionSalesList = ref([]);
 const getData = () => {
-  axios.post("largeScreen/transactionStatistics/regionSales").then((res) => {
+  axios.post("/largeScreen/transactionStatistics/regionSales").then((res) => {
     if (res.data.code == 10000) {
       res.data.result.slice(0, 9).forEach((element) => {
         regionSalesList.value.push(element.regionSales);
