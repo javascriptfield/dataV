@@ -38,7 +38,7 @@ const props = defineProps({
 .image-border {
   width: 337px;
   height: pxToVh(152);
-  background: url("../src/assets/images/border1.png") no-repeat center;
+  background: url("../../assets/images/border1.png") no-repeat center;
   background-size: 100% 100%;
   margin: 0 20px 20px 20px;
 }

@@ -84,9 +84,6 @@ import StatisticsTable from "../components/StatisticsTable/index.vue";
   height: pxToVh(1000);
 }
 .image-border {
-  background: url("../src/assets/images/border.png") no-repeat center;
-  background-size: 100% 100%;
-  margin: 0 20px 20px 20px;
   width: 541px;
   height: pxToVh(300);
 }
