@@ -1,20 +1,20 @@
 <script setup>
 import * as echarts from "echarts";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import axios from "axios";
 let trendChart = null;
-const newSaleAbleQuantityList = ref([]);
-const salesVolumesList = ref([]);
-const monthlyPriceList = ref([]);
+const newSaleAbleQuantityList = [];
+const salesVolumesList = [];
+const monthlyPriceList = [];
 const getData = () => {
   axios
     .post("/ZsExternalInterface/largeScreen/transactionStatistics/monthlyPrice")
     .then((res) => {
       if (res.data.code == 10000) {
         res.data.result.slice(0, 12).forEach((element) => {
-          newSaleAbleQuantityList.value.push(element.newSaleAbleQuantity);
-          salesVolumesList.value.push(element.salesVolumes);
-          monthlyPriceList.value.push(element.monthlyPrice);
+          newSaleAbleQuantityList.push(element.newSaleAbleQuantity);
+          salesVolumesList.push(element.salesVolumes);
+          monthlyPriceList.push(element.monthlyPrice);
         });
         setOption();
       }
@@ -111,7 +111,7 @@ const setOption = () => {
       {
         name: "新增可售量",
         type: "bar",
-        data: newSaleAbleQuantityList.value,
+        data: newSaleAbleQuantityList,
         itemStyle: {
           color: "#7999D4",
         },
@@ -119,7 +119,7 @@ const setOption = () => {
       {
         name: "销售量",
         type: "bar",
-        data: salesVolumesList.value,
+        data: salesVolumesList,
         itemStyle: {
           color: "#E89898",
         },
@@ -128,7 +128,7 @@ const setOption = () => {
         name: "单价",
         type: "line",
         yAxisIndex: 1,
-        data: monthlyPriceList.value,
+        data: monthlyPriceList,
         itemStyle: {
           color: "#7BD9F6",
           lineStyle: {

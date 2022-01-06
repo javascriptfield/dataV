@@ -1,9 +1,9 @@
 <script setup>
 import * as echarts from "echarts";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import axios from "axios";
 let areaPieChart = null;
-const series = ref([
+const series = [
   {
     value: 0,
     name: "144m²以上",
@@ -34,7 +34,7 @@ const series = ref([
     key: "segQuantity1",
     itemStyle: { color: "#F5CF7A" },
   },
-]);
+];
 const getData = () => {
   axios
     .post(
@@ -45,7 +45,7 @@ const getData = () => {
         for (const key in res.data.result) {
           if (Object.hasOwnProperty.call(res.data.result, key)) {
             const element = res.data.result[key];
-            series.value.forEach((e) => {
+            series.forEach((e) => {
               if (e.key == key) {
                 e.value = element;
               }
@@ -91,7 +91,7 @@ const setOption = () => {
             return data.percent + "%";
           },
         },
-        data: series.value,
+        data: series,
       },
     ],
   });

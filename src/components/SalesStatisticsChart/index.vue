@@ -1,16 +1,16 @@
 <script setup>
 import * as echarts from "echarts";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import axios from "axios";
 let salesStatisticsChart = null;
-const regionSalesList = ref([]);
+const regionSalesList = [];
 const getData = () => {
   axios
     .post("/ZsExternalInterface/largeScreen/transactionStatistics/regionSales")
     .then((res) => {
       if (res.data.code == 10000) {
         res.data.result.slice(0, 9).forEach((element) => {
-          regionSalesList.value.push(element.regionSales);
+          regionSalesList.push(element.regionSales);
         });
         setOption();
       }
@@ -83,7 +83,7 @@ const setOption = () => {
     series: [
       {
         type: "bar",
-        data: regionSalesList.value,
+        data: regionSalesList,
         itemStyle: {
           color: "#BD7CF7",
           label: {

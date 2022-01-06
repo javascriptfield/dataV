@@ -1,6 +1,6 @@
 <script setup>
 import * as echarts from "echarts";
-import { onMounted, ref, watch } from "vue";
+import { onMounted, watch } from "vue";
 let gaugeChart = null;
 const props = defineProps({
   chartId: {

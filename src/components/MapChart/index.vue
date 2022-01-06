@@ -1,6 +1,6 @@
 <script setup>
 import * as echarts from "echarts";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { suzhouJson } from "../../assets/json/suzhou.js";
 import axios from "axios";
 echarts.registerMap("suzhou", suzhouJson);
