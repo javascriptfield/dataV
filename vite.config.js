@@ -3,7 +3,13 @@ import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import { viteMockServe } from 'vite-plugin-mock'
 export default defineConfig({
-  plugins: [vue(), WindiCSS()],
+  plugins: [vue(), WindiCSS(), viteMockServe({
+    ignore: /^\_/,
+    mockPath: 'mock',
+    localEnabled: true,
+    prodEnabled: true,
+    supportTs: false
+  })],
   server: {
     host: '0.0.0.0',
     // proxy: {
