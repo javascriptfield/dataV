@@ -5,7 +5,7 @@ import { configMockPlugin } from './src/mock/config';
 export default ((command) => {
   let prodMock = true
   return {
-    plugins: [vue(), WindiCSS(), configMockPlugin()],
+    plugins: [vue(), WindiCSS(), configMockPlugin(prodMock)],
     server: {
       host: '0.0.0.0',
       proxy: {
