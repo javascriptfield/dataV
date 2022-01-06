@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue";
 import { suzhouJson } from "../../assets/json/suzhou.js";
 import axios from "axios";
 echarts.registerMap("suzhou", suzhouJson);
-let mapChart = ref(null);
+let mapChart = null;
 const seriesData = suzhouJson.features.map((e) => {
   return {
     name: e.properties.name,
@@ -24,7 +24,7 @@ const getData = () => {
     });
 };
 const setOption = () => {
-  mapChart.value.setOption({
+  mapChart.setOption({
     series: [
       {
         type: "map",
@@ -48,9 +48,9 @@ const setOption = () => {
   });
 };
 onMounted(() => {
-  mapChart.value = echarts.init(document.getElementById("mapChart"));
+  mapChart = echarts.init(document.getElementById("mapChart"));
   window.addEventListener("resize", () => {
-    mapChart.value.resize();
+    mapChart.resize();
   });
   getData();
 });

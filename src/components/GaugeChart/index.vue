@@ -1,7 +1,7 @@
 <script setup>
 import * as echarts from "echarts";
 import { onMounted, ref, watch } from "vue";
-let gaugeChart = ref(null);
+let gaugeChart = null;
 const props = defineProps({
   chartId: {
     type: String,
@@ -17,7 +17,7 @@ const props = defineProps({
   },
 });
 const setOption = () => {
-  gaugeChart.value.setOption({
+  gaugeChart.setOption({
     series: [
       {
         type: "gauge",
@@ -84,9 +84,9 @@ watch(
   }
 );
 onMounted(() => {
-  gaugeChart.value = echarts.init(document.getElementById(props.chartId));
+  gaugeChart = echarts.init(document.getElementById(props.chartId));
   window.addEventListener("resize", () => {
-    gaugeChart.value.resize();
+    gaugeChart.resize();
   });
 });
 </script>

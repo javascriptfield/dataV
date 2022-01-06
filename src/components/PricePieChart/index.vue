@@ -2,7 +2,7 @@
 import * as echarts from "echarts";
 import { onMounted, nextTick, ref } from "vue";
 import axios from "axios";
-let pricePieChart = ref(null);
+let pricePieChart = null;
 const series = ref([
   {
     value: 0,
@@ -63,7 +63,7 @@ const getData = () => {
     });
 };
 const setOption = () => [
-  pricePieChart.value.setOption({
+  pricePieChart.setOption({
     legend: {
       orient: "vertical",
       left: "6%",
@@ -109,10 +109,10 @@ const setOption = () => [
   }),
 ];
 onMounted(() => {
-  pricePieChart.value = echarts.init(document.getElementById("pricePieChart"));
+  pricePieChart = echarts.init(document.getElementById("pricePieChart"));
   getData();
   window.addEventListener("resize", () => {
-    pricePieChart.value.resize();
+    pricePieChart.resize();
   });
 });
 </script>

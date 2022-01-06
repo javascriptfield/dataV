@@ -2,7 +2,7 @@
 import * as echarts from "echarts";
 import { onMounted, ref } from "vue";
 import axios from "axios";
-let salesStatisticsChart = ref(null);
+let salesStatisticsChart = null;
 const regionSalesList = ref([]);
 const getData = () => {
   axios
@@ -17,7 +17,7 @@ const getData = () => {
     });
 };
 const setOption = () => {
-  salesStatisticsChart.value.setOption({
+  salesStatisticsChart.setOption({
     grid: {
       top: "30%",
       bottom: "16%",
@@ -100,12 +100,12 @@ const setOption = () => {
   });
 };
 onMounted(() => {
-  salesStatisticsChart.value = echarts.init(
+  salesStatisticsChart = echarts.init(
     document.getElementById("salesStatisticsChart")
   );
   getData();
   window.addEventListener("resize", () => {
-    salesStatisticsChart.value.resize();
+    salesStatisticsChart.resize();
   });
 });
 </script>

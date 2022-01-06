@@ -2,7 +2,7 @@
 import * as echarts from "echarts";
 import { onMounted, ref } from "vue";
 import axios from "axios";
-let areaPieChart = ref(null);
+let areaPieChart = null;
 const series = ref([
   {
     value: 0,
@@ -57,7 +57,7 @@ const getData = () => {
     });
 };
 const setOption = () => {
-  areaPieChart.value.setOption({
+  areaPieChart.setOption({
     legend: {
       orient: "vertical",
       left: "6%",
@@ -97,10 +97,10 @@ const setOption = () => {
   });
 };
 onMounted(() => {
-  areaPieChart.value = echarts.init(document.getElementById("areaPieChart"));
+  areaPieChart = echarts.init(document.getElementById("areaPieChart"));
   getData();
   window.addEventListener("resize", () => {
-    areaPieChart.value.resize();
+    areaPieChart.resize();
   });
 });
 </script>

@@ -2,7 +2,7 @@
 import * as echarts from "echarts";
 import { onMounted, ref } from "vue";
 import axios from "axios";
-let trendChart = ref(null);
+let trendChart = null;
 const newSaleAbleQuantityList = ref([]);
 const salesVolumesList = ref([]);
 const monthlyPriceList = ref([]);
@@ -21,7 +21,7 @@ const getData = () => {
     });
 };
 const setOption = () => {
-  trendChart.value.setOption({
+  trendChart.setOption({
     grid: {
       top: "30%",
       bottom: "16%",
@@ -140,9 +140,9 @@ const setOption = () => {
   });
 };
 onMounted(() => {
-  trendChart.value = echarts.init(document.getElementById("trendChart"));
+  trendChart = echarts.init(document.getElementById("trendChart"));
   window.addEventListener("resize", () => {
-    trendChart.value.resize();
+    trendChart.resize();
   });
   getData();
 });
