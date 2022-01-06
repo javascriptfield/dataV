@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "echarts": "^5.2.2",
+    "mockjs": "^1.1.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {
@@ -16,6 +17,7 @@
     "postcss-px-to-viewport": "^1.1.1",
     "sass": "^1.45.2",
     "vite": "^2.7.2",
+    "vite-plugin-mock": "^2.9.6",
     "vite-plugin-windicss": "^1.6.1",
     "windicss": "^3.4.2"
   }

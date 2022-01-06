@@ -37,9 +37,7 @@ const series = [
 ];
 const getData = () => {
   axios
-    .post(
-      "/ZsExternalInterface/largeScreen/transactionStatistics/saleVolumeAreaSegment"
-    )
+    .post(`${import.meta.env.VITE_API_PREFIX}/saleVolumeAreaSegment`)
     .then((res) => {
       if (res.data.code == 10000) {
         for (const key in res.data.result) {

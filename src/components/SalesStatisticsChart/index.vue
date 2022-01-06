@@ -5,16 +5,14 @@ import axios from "axios";
 let salesStatisticsChart = null;
 const regionSalesList = [];
 const getData = () => {
-  axios
-    .post("/ZsExternalInterface/largeScreen/transactionStatistics/regionSales")
-    .then((res) => {
-      if (res.data.code == 10000) {
-        res.data.result.slice(0, 9).forEach((element) => {
-          regionSalesList.push(element.regionSales);
-        });
-        setOption();
-      }
-    });
+  axios.post(`${import.meta.env.VITE_API_PREFIX}/regionSales`).then((res) => {
+    if (res.data.code == 10000) {
+      res.data.result.slice(0, 9).forEach((element) => {
+        regionSalesList.push(element.regionSales);
+      });
+      setOption();
+    }
+  });
 };
 const setOption = () => {
   salesStatisticsChart.setOption({

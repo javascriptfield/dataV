@@ -14,9 +14,7 @@ let tableData = ref({
 });
 const getData = () => {
   axios
-    .post(
-      "/ZsExternalInterface/largeScreen/transactionStatistics/lastMonthStatistics"
-    )
+    .post(`${import.meta.env.VITE_API_PREFIX}/lastMonthStatistics`)
     .then((res) => {
       if (res.data.code == 10000) {
         tableData.value = res.data.result;
