@@ -8,6 +8,11 @@ export default defineConfig({
     mockPath: 'mock',
     localEnabled: true,
     prodEnabled: true,
+    injectCode: `
+      import { setupProdMockServer } from './mockProdServer';
+
+      setupProdMockServer();
+      `,
     supportTs: false
   })],
   server: {
