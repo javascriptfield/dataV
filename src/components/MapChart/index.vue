@@ -1,20 +1,28 @@
 <script setup>
 import * as echarts from "echarts";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { suzhouJson } from "../../assets/json/suzhou.js";
+import axios from "axios";
 echarts.registerMap("suzhou", suzhouJson);
+let mapChart = ref(null);
 const seriesData = suzhouJson.features.map((e) => {
   return {
     name: e.properties.name,
-    value: e.properties.id,
+    value: 0,
   };
 });
-onMounted(() => {
-  const mapChart = echarts.init(document.getElementById("mapChart"));
-  window.addEventListener("resize", () => {
-    mapChart.resize();
+const getData = () => {
+  axios.post("largeScreen/transactionStatistics/regionPrice").then((res) => {
+    if (res.data.code == 10000) {
+      res.data.result.slice(0, 9).forEach((element, index) => {
+        seriesData[index].value = element.regionPrice;
+      });
+      setOption();
+    }
   });
-  mapChart.setOption({
+};
+const setOption = () => {
+  mapChart.value.setOption({
     series: [
       {
         type: "map",
@@ -25,7 +33,7 @@ onMounted(() => {
           color: "#F5CF7A",
           fontSize: 10,
           formatter: function (params) {
-            return params.name + "\n\n" + "20130元/m²";
+            return params.name + "\n\n" + `${params.value}元/m²`;
           },
         },
         itemStyle: {
@@ -36,6 +44,13 @@ onMounted(() => {
       },
     ],
   });
+};
+onMounted(() => {
+  mapChart.value = echarts.init(document.getElementById("mapChart"));
+  window.addEventListener("resize", () => {
+    mapChart.value.resize();
+  });
+  getData();
 });
 </script>
 <template>
