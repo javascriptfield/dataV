@@ -8,7 +8,7 @@ export default defineConfig({
     localEnabled: true,
     prodEnabled: true,
     injectCode: `
-      import { setupProdMockServer } from './src/mockProdServer.js';
+      import { setupProdMockServer } from './mockProdServer.js';
       setupProdMockServer()
     `
   })],
