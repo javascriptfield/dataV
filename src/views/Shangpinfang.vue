@@ -78,7 +78,6 @@ import StatisticsTable from "../components/StatisticsTable/index.vue";
 </template>
 
 <style lang="scss" scoped>
-@import "../style/function.scss";
 .map {
   width: 760px;
   height: pxToVh(1000);

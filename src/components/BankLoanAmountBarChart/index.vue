@@ -81,7 +81,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "../../style/function.scss";
 .image-border {
   width: 457px;
   height: pxToVh(321);

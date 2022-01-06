@@ -34,7 +34,6 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import "../../style/function.scss";
 .image-border {
   width: 337px;
   height: pxToVh(152);

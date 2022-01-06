@@ -74,7 +74,3 @@ const gridList = [
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import "../style/function.scss";
-</style>
