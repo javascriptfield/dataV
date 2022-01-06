@@ -43,7 +43,9 @@ const series = ref([
 ]);
 const getData = () => {
   axios
-    .post("/largeScreen/transactionStatistics/salesVolumeProportion")
+    .post(
+      "/ZsExternalInterface/largeScreen/transactionStatistics/salesVolumeProportion"
+    )
     .then((res) => {
       if (res.data.code == 10000) {
         for (const key in res.data.result) {

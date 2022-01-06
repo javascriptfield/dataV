@@ -7,16 +7,18 @@ const newSaleAbleQuantityList = ref([]);
 const salesVolumesList = ref([]);
 const monthlyPriceList = ref([]);
 const getData = () => {
-  axios.post("/largeScreen/transactionStatistics/monthlyPrice").then((res) => {
-    if (res.data.code == 10000) {
-      res.data.result.slice(0, 12).forEach((element) => {
-        newSaleAbleQuantityList.value.push(element.newSaleAbleQuantity);
-        salesVolumesList.value.push(element.salesVolumes);
-        monthlyPriceList.value.push(element.monthlyPrice);
-      });
-      setOption();
-    }
-  });
+  axios
+    .post("/ZsExternalInterface/largeScreen/transactionStatistics/monthlyPrice")
+    .then((res) => {
+      if (res.data.code == 10000) {
+        res.data.result.slice(0, 12).forEach((element) => {
+          newSaleAbleQuantityList.value.push(element.newSaleAbleQuantity);
+          salesVolumesList.value.push(element.salesVolumes);
+          monthlyPriceList.value.push(element.monthlyPrice);
+        });
+        setOption();
+      }
+    });
 };
 const setOption = () => {
   trendChart.value.setOption({

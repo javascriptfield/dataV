@@ -14,7 +14,9 @@ let tableData = ref({
 });
 const getData = () => {
   axios
-    .post("/largeScreen/transactionStatistics/lastMonthStatistics")
+    .post(
+      "/ZsExternalInterface/largeScreen/transactionStatistics/lastMonthStatistics"
+    )
     .then((res) => {
       if (res.data.code == 10000) {
         tableData.value = res.data.result;
