@@ -6,12 +6,12 @@ export default defineConfig((command) => {
     plugins: [vue(), WindiCSS()],
     server: {
       host: "0.0.0.0",
-      // proxy: {
-      //   '/ZsExternalInterface': {
-      //     target: 'http://192.168.1.140:9619',
-      //     changeOrigin: true,
-      //   },
-      // }
+      proxy: {
+        "/ZsExternalInterface": {
+          target: "http://192.168.1.140:9619",
+          changeOrigin: true,
+        },
+      },
     },
     css: {
       postcss: {
