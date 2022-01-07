@@ -4,7 +4,7 @@ import WindiCSS from "vite-plugin-windicss";
 export default defineConfig((command) => {
   return {
     plugins: [vue(), WindiCSS()],
-    base: "/doc/",
+    base: "/dataV/doc/",
     build: {
       outDir: "doc",
     },
