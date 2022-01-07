@@ -4,7 +4,7 @@ import WindiCSS from "vite-plugin-windicss";
 export default defineConfig((command) => {
   return {
     plugins: [vue(), WindiCSS()],
-    base: "./",
+    base: "https://javascriptfield.github.io/",
     build: {
       outDir: "docs",
     },
