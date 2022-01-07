@@ -4,9 +4,9 @@ import WindiCSS from "vite-plugin-windicss";
 export default defineConfig((command) => {
   return {
     plugins: [vue(), WindiCSS()],
-    base: "https://javascriptfield.github.io/",
+    base: command.mode == "github" ? "https://javascriptfield.github.io/" : "",
     build: {
-      outDir: "docs",
+      outDir: command.mode == "github" ? "docs" : "",
     },
     server: {
       host: "0.0.0.0",
