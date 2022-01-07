@@ -4,6 +4,9 @@ import WindiCSS from "vite-plugin-windicss";
 export default defineConfig((command) => {
   return {
     plugins: [vue(), WindiCSS()],
+    build: {
+      outDir: "doc",
+    },
     server: {
       host: "0.0.0.0",
       proxy: {
